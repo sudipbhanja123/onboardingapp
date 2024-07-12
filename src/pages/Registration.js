@@ -142,15 +142,14 @@ const Registration = () => {
         </div>
         <div className="text-center">
           <span className="text-sm">Have an account? </span>
-          <a
+          <button
             onClick={() => {
               navigate("/registration");
             }}
-            href="/login"
             className="text-primeryBtn text-sm"
           >
             Sign In
-          </a>
+          </button>
         </div>
       </div>
     </div>

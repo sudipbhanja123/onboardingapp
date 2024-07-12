@@ -91,15 +91,14 @@ const LoginPage = () => {
         </div>
         <div className="text-center">
           <span className="text-sm">Don't have an account? </span>
-          <a
+          <button
             onClick={() => {
               navigate("/registration");
             }}
-            href="/registration"
             className="text-primeryBtn text-sm"
           >
             Register
-          </a>
+          </button>
         </div>
       </div>
     </div>
