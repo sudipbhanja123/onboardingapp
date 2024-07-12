@@ -5,7 +5,6 @@ import { ref, set } from "firebase/database";
 import { v4 as uuid } from "uuid";
 
 const Registration = () => {
-  // const database = getDatabase();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

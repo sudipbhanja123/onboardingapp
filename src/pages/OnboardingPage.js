@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const OnboardingPage = () => {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   const contentArray = [
     {
@@ -63,7 +65,6 @@ const OnboardingPage = () => {
                   ))}
                 </div>
 
-                {/* {count === 2 ? ( */}
                 <div
                   className={`${
                     count === 2 ? "flex" : "hidden"
@@ -71,7 +72,7 @@ const OnboardingPage = () => {
                 >
                   <button
                     onClick={() => {
-                      window.location.href = "/login";
+                      navigate("/login");
                     }}
                     className="relative flex items-center justify-center w-24 h-24 bg-orange-500 rounded-full"
                   >
@@ -80,7 +81,7 @@ const OnboardingPage = () => {
                     </div>
                   </button>
                 </div>
-                {/* // ) : ( */}
+
                 <div
                   className={`${
                     count !== 2 ? "flex" : "hidden"
@@ -89,7 +90,7 @@ const OnboardingPage = () => {
                   <button
                     className="text-sm"
                     onClick={() => {
-                      window.location.href = "/login";
+                      navigate("/login");
                     }}
                   >
                     Skip
@@ -104,7 +105,6 @@ const OnboardingPage = () => {
                     </span>
                   </button>
                 </div>
-                {/* // )} */}
               </div>
             </div>
           </div>
