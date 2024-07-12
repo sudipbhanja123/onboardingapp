@@ -16,7 +16,6 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/tracking" element={<Tracking />} />
         </Routes>
-        {/* <LoginPage /> */}
       </div>
     </BrowserRouter>
   );
