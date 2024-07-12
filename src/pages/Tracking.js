@@ -143,10 +143,10 @@ const Tracking = () => {
   console.log("Time=", initialTime);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="p-8 rounded shadow-md w-full max-w-md text-center">
+      <div className="p-8 rounded shadow-md w-full max-w-md text-center bg-white h-screen md:h-auto">
         <button
           onClick={handleLogout}
-          className="bg-primeryBtn text-white p-3 ml-64 rounded font-semibold"
+          className=" text-primeryBtn p-3 ml-64 rounded font-semibold cursor-pointer hover:underline"
         >
           Logout
         </button>
