@@ -13,8 +13,9 @@ const OnboardingPage = () => {
         "url('https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/1:1/w_2560%2Cc_limit/Smashburger-recipe-120219.jpg')",
     },
     {
-      title: "Fresh Ingredients",
-      description: "We use only the freshest ingredients to make our dishes.",
+      title: "We serve incomparable delicacies",
+      description:
+        "All the best restaurants with their top menu waiting for you, they can't wait for your order!",
       backgroundImage:
         "url('https://static.toiimg.com/thumb/83565509.cms?width=1200&height=900')",
     },

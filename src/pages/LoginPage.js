@@ -60,7 +60,7 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <a href="#" className="text-primeryBtn text-sm float-right mt-1">
+            <a href="/" className="text-primeryBtn text-sm float-right mt-1">
               Forgot password?
             </a>
           </div>
