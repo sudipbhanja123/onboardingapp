@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { auth, googleProvider } from "../utils/firebaseConfig";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-
+import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,7 +12,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "/tracking";
+      navigate("/tracking");
       console.log("Successfull");
       // Redirect or show logged-in state
     } catch (error) {
@@ -22,7 +23,7 @@ const LoginPage = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      window.location.href = "/onboarding";
+      navigate("/onboarding");
       // Redirect or show logged-in state
     } catch (error) {
       console.error(error.message);
