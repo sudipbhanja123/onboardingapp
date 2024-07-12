@@ -91,7 +91,13 @@ const LoginPage = () => {
         </div>
         <div className="text-center">
           <span className="text-sm">Don't have an account? </span>
-          <a href="/registration" className="text-primeryBtn text-sm">
+          <a
+            onClick={() => {
+              navigate("/registration");
+            }}
+            href="/registration"
+            className="text-primeryBtn text-sm"
+          >
             Register
           </a>
         </div>

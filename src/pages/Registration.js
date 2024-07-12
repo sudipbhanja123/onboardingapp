@@ -3,8 +3,10 @@ import { auth, googleProvider, database } from "../utils/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { v4 as uuid } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 const Registration = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -140,7 +142,13 @@ const Registration = () => {
         </div>
         <div className="text-center">
           <span className="text-sm">Have an account? </span>
-          <a href="/login" className="text-primeryBtn text-sm">
+          <a
+            onClick={() => {
+              navigate("/registration");
+            }}
+            href="/login"
+            className="text-primeryBtn text-sm"
+          >
             Sign In
           </a>
         </div>
