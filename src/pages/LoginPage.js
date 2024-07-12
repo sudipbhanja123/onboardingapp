@@ -2,38 +2,41 @@ import React, { useState } from "react";
 import { auth, googleProvider } from "../utils/firebaseConfig";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import LoginSuccessPopup from "../components/LoginSuccessPopup";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleLogin = async (e) => {
-    console.log("Auth=", auth);
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/tracking");
-      console.log("Successfull");
-      // Redirect or show logged-in state
+      toast.success("Login successful", { autoClose: 3000 });
+      setShowPopup(true);
     } catch (error) {
-      console.error(error.message);
+      toast.error("Invalid Credantial", { autoClose: 3000 });
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/onboarding");
-      // Redirect or show logged-in state
+      toast.success("Login successful", { autoClose: 3000 });
+      setShowPopup(true);
     } catch (error) {
-      console.error(error.message);
+      toast.error("Invalid Credantial !", { autoClose: 3000 });
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-4">Login to your account.</h1>
+        <h1 className="text-3xl font-bold mb-4">Login to your account</h1>
         <p className="mb-6 text-PrimarySeparator">
           Please sign in to your account
         </p>
@@ -101,6 +104,7 @@ const LoginPage = () => {
           </button>
         </div>
       </div>
+      <LoginSuccessPopup show={showPopup} onClose={() => setShowPopup(false)} />
     </div>
   );
 };

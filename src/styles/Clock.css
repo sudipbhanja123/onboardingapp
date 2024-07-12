@@ -29,6 +29,8 @@
         }
         &.minutes {
           border-left:solid 1px #cc0000;
+          height: 45px;
+          top: 6px;
         }
         &.hours {
           width: 35px;

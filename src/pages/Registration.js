@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { auth, googleProvider, database } from "../utils/firebaseConfig";
-import { signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const Registration = () => {
       return;
     }
     try {
+      await createUserWithEmailAndPassword(auth, email, password);
       set(ref(database, "users/" + uuid()), {
         id: uuid(),
         email: email,
@@ -27,11 +30,14 @@ const Registration = () => {
         termsAccepted: termsAccepted,
       }).then(() => {
         console.log("User created successfully");
+        toast.success("Registration Successfull", { autoClose: 3000 });
+        navigate("/login");
       });
       //   console.log("Registered with email:", email);
       // Redirect or show logged-in state
     } catch (error) {
-      console.error("Error during registration:", error.message);
+      toast.error("Error during registration", { autoClose: 3000 });
+      // console.error("Error during registration:", error.message);
     }
   };
 
@@ -46,7 +52,6 @@ const Registration = () => {
         username: user.displayName,
         termsAccepted: true,
       });
-      // Redirect or show logged-in state
     } catch (error) {
       console.error("Error during Google sign-up:", error.message);
     }
@@ -144,7 +149,7 @@ const Registration = () => {
           <span className="text-sm">Have an account? </span>
           <button
             onClick={() => {
-              navigate("/registration");
+              navigate("/login");
             }}
             className="text-primeryBtn text-sm"
           >
