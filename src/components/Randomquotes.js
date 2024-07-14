@@ -39,7 +39,7 @@ const RandomQuotes = () => {
         const data = await response.json();
         setQuote(data.content);
       } catch (error) {
-        setError(error.message);
+        setError("Network response was not ok");
       }
     };
     fetchQuote();
@@ -50,7 +50,7 @@ const RandomQuotes = () => {
   return (
     <div className="bg-gray-200 p-4 rounded-lg mt-4">
       {error ? (
-        <p className="text-center text-sm text-red-500">{error}</p>
+        <p className="text-center text-sm">{error}</p>
       ) : (
         <p className="text-center text-sm italic">{quote}</p>
       )}
