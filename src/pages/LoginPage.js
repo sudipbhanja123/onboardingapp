@@ -37,22 +37,6 @@ const LoginPage = () => {
     }
   };
 
-  const handlePasswordReset = async () => {
-    try {
-      await sendPasswordResetEmail(auth, email).then(() => {
-        toast.success(
-          "Password reset link has been sent. Please check your mailbox",
-          { autoClose: 3000 }
-        );
-        // setTimeout(() => {
-        //   navigate("/login", { replace: true });
-        // }, 5300);
-      });
-    } catch (err) {
-      toast.error("An error occurred while sending mail.");
-    }
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
