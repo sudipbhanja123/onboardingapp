@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Registration from "./pages/Registration";
 import Tracking from "./pages/Tracking";
 import { ToastContainer } from "react-toastify";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<OnboardingPage />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/tracking" element={<Tracking />} />
+          <Route path="/forgot" element={<ForgotPassword />} />
         </Routes>
       </div>
     </BrowserRouter>

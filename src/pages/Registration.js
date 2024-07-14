@@ -123,7 +123,7 @@ const Registration = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-primeryBtn text-white p-2 rounded font-semibold mt-4"
+            className="w-full bg-primeryBtn text-white p-2 font-semibold mt-4 rounded-full"
           >
             Register
           </button>

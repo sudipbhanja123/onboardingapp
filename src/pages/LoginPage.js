@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { auth, googleProvider } from "../utils/firebaseConfig";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,6 +34,22 @@ const LoginPage = () => {
       setShowPopup(true);
     } catch (error) {
       toast.error("Invalid Credantial !", { autoClose: 3000 });
+    }
+  };
+
+  const handlePasswordReset = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email).then(() => {
+        toast.success(
+          "Password reset link has been sent. Please check your mailbox",
+          { autoClose: 3000 }
+        );
+        // setTimeout(() => {
+        //   navigate("/login", { replace: true });
+        // }, 5300);
+      });
+    } catch (err) {
+      toast.error("An error occurred while sending mail.");
     }
   };
 
@@ -64,13 +84,18 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <a href="/" className="text-primeryBtn text-sm float-right mt-1">
+            <button
+              onClick={() => {
+                navigate("/forgot");
+              }}
+              className="text-primeryBtn text-sm float-right mt-1"
+            >
               Forgot password?
-            </a>
+            </button>
           </div>
           <button
             type="submit"
-            className="w-full bg-primeryBtn text-white p-2 rounded font-semibold mt-4"
+            className="w-full bg-primeryBtn text-white p-2 font-semibold mt-4 rounded-full"
           >
             Sign In
           </button>
