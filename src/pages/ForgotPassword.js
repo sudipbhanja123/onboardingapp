@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
@@ -14,7 +14,6 @@ import {
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const [userExists, setUserExists] = useState(null);
   const [email, setEmail] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
@@ -26,10 +25,8 @@ const ForgotPassword = () => {
     try {
       const snapshot = await get(emailQuery);
       if (snapshot.exists()) {
-        setUserExists(true);
         return true;
       } else {
-        setUserExists(false);
         return false;
       }
     } catch (error) {
